@@ -112,3 +112,21 @@ ggplot(file_tidy, aes(x = week, y = data, color = subject_id, group = subject_id
 ```
 
 Comment: For control arm spaghetti plot, we can see that the observations are more concentrated in an interval. For experimental arm, we can see that the observations are more spread out; also the observations for experimental arm are relatively higher than in the control arm.
+
+**Problem 3**
+
+```{r}
+
+regression = function(n = 30, beta0 = 2, beta1) {
+  df = tibble(
+    x = rnorm(30, mean = 0, sd = 1),
+    y = beta0 + beta1 * x + rnorm(30, 0, sqrt(50))
+  )
+  fit = lm(y ~ x, data = df)
+  tidy_fit = broom::tidy(fit)
+  tibble(
+    beta1_hat = tidy_fit$estimate[2],
+    p_value = tidy_fit$p.value[2]
+  )
+}
+```
