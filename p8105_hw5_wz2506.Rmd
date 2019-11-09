@@ -98,3 +98,15 @@ file_tidy = file_nest %>%
 file_tidy
 
 ```
+
+```{r}
+
+ggplot(file_tidy, aes(x = week, y = data, color = subject_id, group = subject_id)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "observations on each subject over time",
+       x = "week",
+       y = "observations") +
+  facet_grid(~group)
+
+```
