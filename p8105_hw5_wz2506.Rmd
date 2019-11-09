@@ -185,3 +185,6 @@ ggplot(rejectnull_proportion, aes(x = beta1_value, y = power)) +
        y = "power")
   
 ```
+
+Association between effect size and power: Assume the effect size is the difference between true beta_1 value and zero which is the value of true beta_1 value. From the plot, we can see that as the effect size increases, the power also increases. Thus, power and the effect size are positively correlated.
+
