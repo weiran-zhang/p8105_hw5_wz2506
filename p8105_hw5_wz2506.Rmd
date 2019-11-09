@@ -82,3 +82,19 @@ file_nest =
 file_nest ##dataframe with file names and data in each files
 
 ```
+
+```{r}
+
+file_tidy = file_nest %>%
+  pivot_longer(week_1:week_8,
+               names_to = "week",
+               values_to = "data") %>%
+  mutate(files = str_remove(file_names, ".csv"),
+         week = str_remove(week, "week_")) %>%
+  separate(file_names, into = c("group", "subject_id"), sep = "_") %>%
+  mutate(group = recode(group, "con" = "control", "exp" = "experimental")) 
+
+file_tidy
+  
+
+```

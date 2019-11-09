@@ -711,6 +711,30 @@ output = purrr::map(files$file_names, read_file)</code></pre>
 ## 18 exp_08.csv   1.37  1.43    1.84   3.6    3.8    4.72   4.68   5.7 
 ## 19 exp_09.csv  -0.4   1.08    2.66   2.7    2.8    2.64   3.51   3.27
 ## 20 exp_10.csv   1.09  2.8     2.8    4.3    2.25   6.57   6.09   4.64</code></pre>
+<pre class="r"><code>file_tidy = file_nest %&gt;%
+  pivot_longer(week_1:week_8,
+               names_to = &quot;week&quot;,
+               values_to = &quot;data&quot;) %&gt;%
+  mutate(files = str_remove(file_names, &quot;.csv&quot;),
+         week = str_remove(week, &quot;week_&quot;)) %&gt;%
+  separate(file_names, into = c(&quot;group&quot;, &quot;subject_id&quot;), sep = &quot;_&quot;) %&gt;%
+  mutate(group = recode(group, &quot;con&quot; = &quot;control&quot;, &quot;exp&quot; = &quot;experimental&quot;)) 
+
+file_tidy</code></pre>
+<pre><code>## # A tibble: 160 x 5
+##    group   subject_id week   data files 
+##    &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; 
+##  1 control 01.csv     1      0.2  con_01
+##  2 control 01.csv     2     -1.31 con_01
+##  3 control 01.csv     3      0.66 con_01
+##  4 control 01.csv     4      1.96 con_01
+##  5 control 01.csv     5      0.23 con_01
+##  6 control 01.csv     6      1.09 con_01
+##  7 control 01.csv     7      0.05 con_01
+##  8 control 01.csv     8      1.94 con_01
+##  9 control 02.csv     1      1.13 con_02
+## 10 control 02.csv     2     -0.88 con_02
+## # … with 150 more rows</code></pre>
 
 
 
