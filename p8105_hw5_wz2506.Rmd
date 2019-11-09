@@ -110,3 +110,5 @@ ggplot(file_tidy, aes(x = week, y = data, color = subject_id, group = subject_id
   facet_grid(~group)
 
 ```
+
+Comment: For control arm spaghetti plot, we can see that the observations are more concentrated in an interval. For experimental arm, we can see that the observations are more spread out; also the observations for experimental arm are relatively higher than in the control arm.
