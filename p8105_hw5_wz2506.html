@@ -783,6 +783,24 @@ for (i in 1:6) {
   output[[i]] = rerun(10000, regression(beta1 = beta_value[[i]])) %&gt;%
     bind_rows
 }</code></pre>
+<pre class="r"><code>sim_results = 
+  tibble(beta1_value = c(1,2,3,4,5,6)) %&gt;%
+  mutate(output_lists = map(.x = beta1_value, ~rerun(10000, regression(beta1 = .x))),
+         estimate_dfs = map(output_lists, bind_rows) 
+  ) %&gt;%
+  select(-output_lists) %&gt;%
+  unnest(estimate_dfs)
+
+head(sim_results)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   beta1_value beta1_hat p_value
+##         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1           1     2.74    0.146
+## 2           1     1.94    0.337
+## 3           1    -0.566   0.713
+## 4           1     0.577   0.689
+## 5           1    -1.14    0.408
+## 6           1     1.06    0.409</code></pre>
 
 
 
