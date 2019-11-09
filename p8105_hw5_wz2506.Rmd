@@ -130,3 +130,14 @@ regression = function(n = 30, beta0 = 2, beta1) {
   )
 }
 ```
+
+Generate 10000 datasets from the model when $\beta_1$ = 0
+```{r}
+
+set.seed(10)
+output_b1 = rerun(100, regression(beta1 = 0)) %>%
+  bind_rows()
+
+head(output_b1)
+
+```

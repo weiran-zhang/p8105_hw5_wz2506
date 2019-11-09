@@ -759,6 +759,21 @@ file_tidy</code></pre>
     p_value = tidy_fit$p.value[2]
   )
 }</code></pre>
+<p>Generate 10000 datasets from the model when <span class="math inline">\(\beta_1\)</span> = 0</p>
+<pre class="r"><code>set.seed(10)
+output_b1 = rerun(100, regression(beta1 = 0)) %&gt;%
+  bind_rows()
+
+head(output_b1)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   beta1_hat p_value
+##       &lt;dbl&gt;   &lt;dbl&gt;
+## 1    -2.44   0.0895
+## 2    -0.366  0.769 
+## 3     2.10   0.0917
+## 4    -0.963  0.431 
+## 5     1.61   0.192 
+## 6     0.213  0.880</code></pre>
 
 
 
