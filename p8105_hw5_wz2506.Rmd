@@ -33,7 +33,7 @@ iris_with_missing
 ```
 
 ```{r}
-
+##Function replacing missing values
 replace_missing = function(x) {
   if (is.numeric(x)) {
     replace(x, is.na(x), mean(x, na.rm = TRUE))
