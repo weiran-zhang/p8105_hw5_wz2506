@@ -43,3 +43,14 @@ replace_missing = function(x) {
 }
 
 ```
+
+```{r}
+
+output = vector("list", length = 5) 
+for (i in 1:5) {
+  output[[i]] = replace_missing(iris_with_missing[[i]])
+  }
+output = map(iris_with_missing, replace_missing)
+as_tibble(output)
+
+```
