@@ -31,3 +31,15 @@ iris_with_missing = iris %>%
 iris_with_missing
 
 ```
+
+```{r}
+
+replace_missing = function(x) {
+  if (is.numeric(x)) {
+    replace(x, is.na(x), mean(x, na.rm = TRUE))
+  } else if(is.character(x)){
+    replace(x, is.na(x), "virginica")
+  }
+}
+
+```
