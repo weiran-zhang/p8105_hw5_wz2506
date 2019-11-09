@@ -65,3 +65,20 @@ colnames(files) = "file_names"
 files
 
 ```
+
+```{r}
+
+read_file = function(file_names){
+  read_csv(paste0("./data/", file_names))
+}
+
+output = purrr::map(files$file_names, read_file)
+
+file_nest = 
+  files %>%
+  mutate(data = output) %>%
+  unnest()
+
+file_nest
+
+```
