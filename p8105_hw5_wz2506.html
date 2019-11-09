@@ -410,12 +410,12 @@ replace_missing = function(x) {
     replace(x, is.na(x), &quot;virginica&quot;)
   }
 }</code></pre>
-<pre class="r"><code>output = vector(&quot;list&quot;, length = 5) 
+<pre class="r"><code>output = vector(&quot;list&quot;, length = 5) ##define an output list
 for (i in 1:5) {
   output[[i]] = replace_missing(iris_with_missing[[i]])
-  }
+  } ##for-loop apply the function
 output = map(iris_with_missing, replace_missing)
-as_tibble(output)</code></pre>
+as_tibble(output) ##make the output an an tidied table form</code></pre>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  

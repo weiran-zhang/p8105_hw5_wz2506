@@ -46,11 +46,11 @@ replace_missing = function(x) {
 
 ```{r}
 
-output = vector("list", length = 5) 
+output = vector("list", length = 5) ##define an output list
 for (i in 1:5) {
   output[[i]] = replace_missing(iris_with_missing[[i]])
-  }
+  } ##for-loop apply the function
 output = map(iris_with_missing, replace_missing)
-as_tibble(output)
+as_tibble(output) ##make the output an an tidied table form
 
 ```
