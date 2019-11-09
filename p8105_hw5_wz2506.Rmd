@@ -188,3 +188,50 @@ ggplot(rejectnull_proportion, aes(x = beta1_value, y = power)) +
 
 Association between effect size and power: Assume the effect size is the difference between true beta_1 value and zero which is the value of true beta_1 value. From the plot, we can see that as the effect size increases, the power also increases. Thus, power and the effect size are positively correlated.
 
+```{r}
+##Plot of average estimate of beta1 hat versus beta1 value
+beta_mean = sim_results %>%
+  group_by(beta1_value) %>%
+  mutate(mean = mean(beta1_hat))
+
+plot1 = ggplot(beta_mean, aes(x = beta1_value, y = mean)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "average estimate of beta_1_hat",
+       x = "beta1",
+       y = "average estimate of beta_1")
+
+plot1
+
+```
+
+```{r}
+##Plot of average estimate of beta1 hat versus beta1 value only in sample for which null was rejected
+beta_mean_rejectnull = rejectnull_proportion %>%
+  mutate(mean_rejectnull = mean(beta1_hat))
+
+plot2 = ggplot(beta_mean_rejectnull, aes(x = beta1_value, y = mean_rejectnull)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "average estimate of beta_1_hat only in samples for which the null was rejected",
+       x = "beta1",
+       y = "average estimate")
+
+plot2
+
+```
+
+```{r}
+
+plot = plot1 + 
+  geom_point(data = beta_mean_rejectnull, aes(x = beta1_value, y = mean_rejectnull), color = "blue") +
+  geom_line(data = beta_mean_rejectnull, aes(x = beta1_value, y = mean_rejectnull), color = "blue") +
+  labs(title = "average estimate under two conditions",
+       x = "beta1",
+       y = "average estimate")
+
+plot
+
+```
+
+From the plot we can see that sample average of beta_1_hat does not equal to the true beta_1 value. The difference between the two values is large when effect size is small and the difference decreases when the effect size increases. Since as the effect size increases, the power also increases and the number of tests that reject the null also increases. And then the difference between the two values becomes smaller. 
