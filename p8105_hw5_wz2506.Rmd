@@ -84,6 +84,7 @@ file_nest ##dataframe with file names and data in each files
 ```
 
 ```{r}
+##Tidy the dataset
 
 file_tidy = file_nest %>%
   pivot_longer(week_1:week_8,
@@ -95,6 +96,5 @@ file_tidy = file_nest %>%
   mutate(group = recode(group, "con" = "control", "exp" = "experimental")) 
 
 file_tidy
-  
 
 ```
