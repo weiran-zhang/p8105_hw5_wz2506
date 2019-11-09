@@ -54,3 +54,14 @@ output = map(iris_with_missing, replace_missing)
 as_tibble(output) ##make the output an an tidied table form
 
 ```
+
+**Problem 2**
+
+```{r}
+
+files = as.data.frame(list.files(path = "./data/", pattern = "*.csv"))
+colnames(files) = "file_names"
+
+files
+
+```

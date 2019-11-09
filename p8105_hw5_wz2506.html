@@ -430,6 +430,32 @@ as_tibble(output) ##make the output an an tidied table form</code></pre>
 ##  9         4.4          2.9         1.4         0.2  setosa 
 ## 10         4.9          3.1         3.77        0.1  setosa 
 ## # … with 140 more rows</code></pre>
+<p><strong>Problem 2</strong></p>
+<pre class="r"><code>files = as.data.frame(list.files(path = &quot;./data/&quot;, pattern = &quot;*.csv&quot;))
+colnames(files) = &quot;file_names&quot;
+
+files</code></pre>
+<pre><code>##    file_names
+## 1  con_01.csv
+## 2  con_02.csv
+## 3  con_03.csv
+## 4  con_04.csv
+## 5  con_05.csv
+## 6  con_06.csv
+## 7  con_07.csv
+## 8  con_08.csv
+## 9  con_09.csv
+## 10 con_10.csv
+## 11 exp_01.csv
+## 12 exp_02.csv
+## 13 exp_03.csv
+## 14 exp_04.csv
+## 15 exp_05.csv
+## 16 exp_06.csv
+## 17 exp_07.csv
+## 18 exp_08.csv
+## 19 exp_09.csv
+## 20 exp_10.csv</code></pre>
 
 
 
