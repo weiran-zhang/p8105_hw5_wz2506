@@ -73,7 +73,9 @@ read_file = function(file_names){
 }
 
 output = purrr::map(files$file_names, read_file)
+```
 
+```{r}
 file_nest = 
   files %>%
   mutate(data = output) %>%
